@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlorArt - Flores y Bisutería Artesanal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff7f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #f8cdd4, #f4aeba);
+    padding: 35px 20px;
+    text-align: center;
+    color: #5a2a35;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+header p {
+    font-size: 20px;
+}
+
+nav {
+    background: white;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px #0002;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    flex: 1 1 auto;
+    text-align: center;
+    text-decoration: none;
+    color: #c94f70;
+    padding: 16px 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #7d2841;
+    background: #ffe5ec;
+}
+
+section {
+    padding: 45px 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: #b83b5e;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 45px 25px;
+    background: linear-gradient(to right, #fff0f3, #ffe5ec);
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 260px;
+}
+
+.hero-text h2 {
+    font-size: 38px;
+    color: #b83b5e;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.hero img {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #d45d79;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #a83252;
+}
+
+.btn-wa {
+    background: #25a244;
+}
+
+.btn-wa:hover {
+    background: #1b7f34;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px #0002;
+}
+
+.card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 13px;
+}
+
+.card h3 {
+    color: #d45d79;
+    margin: 12px 0;
+}
+
+.precio {
+    color: #9d2e4e;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 12px;
+}
+
+.qty-controls button {
+    background: #d45d79;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.buscador {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.buscador input {
+    width: 90%;
+    max-width: 500px;
+    padding: 13px;
+    border: 2px solid #efb1bd;
+    border-radius: 25px;
+}
+
+table {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #f8cdd4;
+    color: #5a2a35;
+}
+
+.beneficios {
+    background: #fff0f3;
+}
+
+.cart-panel {
+    max-width: 950px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px #0002;
+}
+
+.cart-row, .receipt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1d6de;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.cart-total strong {
+    color: #9d2e4e;
+    font-size: 23px;
+}
+
+.anticipo-aviso {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background: #fff0f3;
+    border-left: 4px solid #d45d79;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.formulario {
+    max-width: 750px;
+    margin: auto;
+    padding: 28px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px #0002;
+}
+
+.formulario label {
+    display: block;
+    margin-top: 14px;
+    color: #7d2841;
+    font-weight: bold;
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+}
+
+.formulario textarea {
+    min-height: 100px;
+}
+
+#recibo {
+    display: none;
+    max-width: 750px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border: 2px dashed #d45d79;
+    border-radius: 15px;
+}
+
+#recibo h2, #recibo h3 {
+    color: #b83b5e;
+}
+
+.adelanto-box {
+    margin: 18px 0;
+    padding: 15px;
+    background: #fff0f3;
+    border-radius: 12px;
+}
+
+.adelanto-box .receipt-row:last-child {
+    border-bottom: none;
+}
+
+.pago-panel {
+    margin-top: 20px;
+    padding: 18px;
+    border: 2px solid #f1d6de;
+    border-radius: 14px;
+}
+
+.pago-panel h3 {
+    margin-bottom: 10px;
+}
+
+.metodo-detalle {
+    display: none;
+    text-align: center;
+}
+
+.metodo-detalle.activo {
+    display: block;
+}
+
+.qr-img {
+    width: 240px;
+    max-width: 100%;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 8px;
+    background: white;
+}
+
+.nota-pago {
+    font-size: 13px;
+    color: #765;
+    margin-top: 8px;
+}
+
+.estado-pago {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.estado-pendiente {
+    background: #fff4d6;
+    color: #7a5600;
+}
+
+.estado-reportado {
+    background: #dff3e4;
+    color: #1d6b34;
+}
+
+.auth-note {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #765;
+}
+
+/* PERSONALIZACIÓN */
+.formulario select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    background: white;
+    font-size: 15px;
+}
+
+.etiqueta-grupo {
+    margin-top: 14px;
+    color: #7d2841;
+    font-weight: bold;
+}
+
+.grupo-opciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.formulario .grupo-opciones label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    padding: 10px;
+    border: 2px solid #efb1bd;
+    border-radius: 10px;
+    font-weight: normal;
+    color: #333;
+    cursor: pointer;
+}
+
+.formulario .grupo-opciones label:has(input:checked) {
+    background: #ffe5ec;
+    border-color: #d45d79;
+}
+
+.formulario .grupo-opciones input {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.precio-extra {
+    margin-left: auto;
+    color: #9d2e4e;
+    font-weight: bold;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.resumen-personalizacion {
+    margin: 18px 0;
+    padding: 15px;
+    background: #fff0f3;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.resumen-personalizacion .receipt-row:last-child {
+    border-bottom: none;
+}
+
+.cart-panel .formulario {
+    max-width: none;
+    margin: 22px 0 0;
+    padding: 18px 0 0;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: 2px solid #f1d6de;
+}
+
+.subtitulo-carrito {
+    color: #b83b5e;
+    margin-top: 22px;
+}
+
+.qr-vacio {
+    margin: 10px auto;
+    max-width: 260px;
+    padding: 26px 14px;
+    border: 2px dashed #d45d79;
+    border-radius: 12px;
+    background: #fff0f3;
+    color: #7d2841;
+    font-size: 14px;
+}
+
+.qr-vacio .icono {
+    font-size: 36px;
+}
+
+details {
+    background: white;
+    padding: 16px;
+    margin: 12px auto;
+    max-width: 850px;
+    border-radius: 10px;
+}
+
+summary {
+    color: #b83b5e;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contacto {
+    text-align: center;
+    background: white;
+    max-width: 800px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 18px;
+}
+
+footer {
+    background: #d45d79;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer a {
+    color: white;
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 38px;
+    }
+
+    .hero-text h2 {
+        font-size: 30px;
+    }
+
+    .cart-row {
+        flex-wrap: wrap;
+    }
+
+    .cart-total {
+        text-align: left;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #recibo, #recibo * {
+        visibility: visible;
+    }
+
+    #recibo {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+
+    #recibo button,
+    #recibo .acciones-pago {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌸 FlorArt 🌸</h1>
+    <p>Flores y Bisutería Artesanal con Amor</p>
+</header>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#personalizar">Personalizar</a>
+    <a href="#precios">Precios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#pedido">Mi carrito</a>
+    <a href="#pedidos">Pedidos</a>
+    <a href="#pago">Pagar adelanto</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section class="hero" id="inicio">
+    <div class="hero-text">
+        <h2>Regalos únicos hechos con amor 💐</h2>
+        <p>
+            Bienvenidos a FlorArt, una plataforma digital
+            especializada en arreglos florales y bisutería
+            artesanal personalizada.
+        </p>
+        <p>
+            Creamos regalos especiales para cumpleaños,
+            aniversarios, graduaciones, bodas y otras ocasiones.
+        </p>
+        <a href="#productos" class="btn">Ver productos</a>
+    </div>
+
+    <img src="5.jpg" alt="Flores y bisutería">
+</section>
+
+<section id="productos">
+    <h2 class="section-title">🌷 Nuestros Productos 🌷</h2>
+
+    <div class="buscador">
+        <input
+            type="text"
+            id="buscarProducto"
+            placeholder="🔍 Buscar productos..."
+        >
+    </div>
+
+    <div class="cards" id="listaProductos">
+
+        <article class="card" data-id="flores">
+            <img src="2.jpg" alt="Arreglos florales">
+            <h3>🌹 Arreglos Florales</h3>
+            <p>Diseños elegantes con flores frescas.</p>
+            <p class="precio">Bs. 80</p>
+
+            <div class="qty-controls">
+                <button onclick="cambiarCantidad('flores', -1)">−</button>
+                <span id="qty-flores">0</span>
+                <button onclick="cambiarCantidad('flores', 1)">+</button>
+            </div>
+
+            <button class="btn" onclick="agregarProducto('flores')">
+                Agregar al pedido
+            </button>
+        </article>
+
+        <article class="card" data-id="bisuteria">
+            <img src="3.jpg" alt="Bisutería artesanal">
+            <h3>💎 Bisutería Artesanal</h3>
+            <p>Accesorios hechos a mano con diseños originales.</p>
+            <p class="precio">Bs. 15</p>
+
+            <div class="qty-controls">
+                <button onclick="cambiarCantidad('bisuteria', -1)">−</button>
+                <span id="qty-bisuteria">0</span>
+                <button onclick="cambiarCantidad('bisuteria', 1)">+</button>
+            </div>
+
+            <button class="btn" onclick="agregarProducto('bisuteria')">
+                Agregar al pedido
+            </button>
+        </article>
+
+        <article class="card" data-id="combo">
+            <img src="4.jpg" alt="Combos especiales">
+            <h3>🎁 Combos Especiales</h3>
+            <p>Flores y bisutería combinadas para un regalo único.</p>
+            <p class="precio">Bs. 150</p>
+
+            <div class="qty-controls">
+                <button onclick="cambiarCantidad('combo', -1)">−</button>
+                <span id="qty-combo">0</span>
+                <button onclick="cambiarCantidad('combo', 1)">+</button>
+            </div>
+
+            <button class="btn" onclick="agregarProducto('combo')">
+                Agregar al pedido
+            </button>
+        </article>
+
+        <article class="card" data-id="regalo">
+            <img src="1.jpg" alt="Regalo personalizado">
+            <h3>🎀 Regalos Personalizados</h3>
+            <p>Regalos con mensajes y detalles especiales.</p>
+            <p class="precio">Bs. 45</p>
+
+            <div class="qty-controls">
+                <button onclick="cambiarCantidad('regalo', -1)">−</button>
+                <span id="qty-regalo">0</span>
+                <button onclick="cambiarCantidad('regalo', 1)">+</button>
+            </div>
+
+            <button class="btn" onclick="agregarProducto('regalo')">
+                Agregar al pedido
+            </button>
+        </article>
+
+    </div>
+</section>
+
+<section id="pedido">
+    <h2 class="section-title">🛒 Tu Carrito</h2>
+
+    <div class="cart-panel">
+        <p id="carritoVacio">
+            Todavía no agregaste productos.
+        </p>
+
+        <div id="carritoItems"></div>
+
+        <div id="personalizar">
+        <h3 class="subtitulo-carrito">🎨 Personaliza tu pedido</h3>
+        <form class="formulario" id="panelPersonalizar" onsubmit="return false">
+
+        <p class="anticipo-aviso">
+            💖 Elige cómo quieres tu regalo. Todo es opcional.
+            Las mejoras y extras se cobran <strong>una vez por pedido</strong>
+            y se suman al total de este carrito.
+        </p>
+
+        <label for="optOcasion">Ocasión:</label>
+        <select id="optOcasion" data-etiqueta="Ocasión">
+            <option value="">— Sin especificar —</option>
+            <option value="Cumpleaños">Cumpleaños</option>
+            <option value="Aniversario">Aniversario</option>
+            <option value="Graduación">Graduación</option>
+            <option value="Boda">Boda</option>
+            <option value="San Valentín">San Valentín</option>
+            <option value="Día de la Madre">Día de la Madre</option>
+            <option value="Otra ocasión">Otra ocasión</option>
+        </select>
+
+        <label for="optDestinatario">¿Para quién es el regalo?</label>
+        <input id="optDestinatario" type="text" maxlength="80"
+            data-etiqueta="Para" placeholder="Ej: mi mamá, mi novia, una amiga">
+
+        <label for="optFlor">Tipo de flor:</label>
+        <select id="optFlor" data-etiqueta="Tipo de flor">
+            <option value="">— Sin preferencia —</option>
+            <option value="Rosas">Rosas</option>
+            <option value="Girasoles">Girasoles</option>
+            <option value="Tulipanes">Tulipanes</option>
+            <option value="Lirios">Lirios</option>
+            <option value="Margaritas">Margaritas</option>
+            <option value="Flores mixtas">Flores mixtas</option>
+            <option value="Flores eternas" data-precio="20">Flores eternas (+Bs. 20)</option>
+        </select>
+
+        <label for="optTamano">Tamaño del arreglo:</label>
+        <select id="optTamano" data-etiqueta="Tamaño">
+            <option value="">Estándar (incluido)</option>
+            <option value="Mediano" data-precio="20">Mediano (+Bs. 20)</option>
+            <option value="Grande" data-precio="40">Grande (+Bs. 40)</option>
+        </select>
+
+        <p class="etiqueta-grupo">Colores preferidos (puedes elegir varios):</p>
+        <div class="grupo-opciones">
+            <label><input type="checkbox" name="optColor" value="Rosado"> 🌸 Rosado</label>
+            <label><input type="checkbox" name="optColor" value="Rojo"> ❤️ Rojo</label>
+            <label><input type="checkbox" name="optColor" value="Blanco"> 🤍 Blanco</label>
+            <label><input type="checkbox" name="optColor" value="Lila"> 💜 Lila</label>
+            <label><input type="checkbox" name="optColor" value="Amarillo"> 💛 Amarillo</label>
+            <label><input type="checkbox" name="optColor" value="Azul"> 💙 Azul</label>
+            <label><input type="checkbox" name="optColor" value="Naranja"> 🧡 Naranja</label>
+            <label><input type="checkbox" name="optColor" value="Colores variados"> 🌈 Variados</label>
+        </div>
+
+        <label for="optBisuteria">Tipo de bisutería (si tu pedido la incluye):</label>
+        <select id="optBisuteria" data-etiqueta="Bisutería">
+            <option value="">— Sin preferencia —</option>
+            <option value="Aretes">Aretes</option>
+            <option value="Pulsera">Pulsera</option>
+            <option value="Collar">Collar</option>
+            <option value="Cadena">Cadena</option>
+            <option value="Llavero">Llavero</option>
+            <option value="Anillo">Anillo</option>
+        </select>
+
+        <label for="optTono">Tono de la bisutería:</label>
+        <select id="optTono" data-etiqueta="Tono de bisutería">
+            <option value="">— Sin preferencia —</option>
+            <option value="Dorado">Dorado</option>
+            <option value="Plateado">Plateado</option>
+            <option value="Rosado">Rosado</option>
+            <option value="Perlas">Perlas</option>
+        </select>
+
+        <label for="optEmpaque">Empaque:</label>
+        <select id="optEmpaque" data-etiqueta="Empaque">
+            <option value="">Papel decorado (incluido)</option>
+            <option value="Bolsa de regalo" data-precio="8">Bolsa de regalo (+Bs. 8)</option>
+            <option value="Caja de regalo" data-precio="10">Caja de regalo (+Bs. 10)</option>
+            <option value="Canasta decorada" data-precio="15">Canasta decorada (+Bs. 15)</option>
+        </select>
+
+        <p class="etiqueta-grupo">Extras para sorprender:</p>
+        <div class="grupo-opciones">
+            <label>
+                <input type="checkbox" name="optExtra" value="Tarjeta con dedicatoria" data-precio="5">
+                💌 Tarjeta <span class="precio-extra">+Bs. 5</span>
+            </label>
+            <label>
+                <input type="checkbox" name="optExtra" value="Globo" data-precio="15">
+                🎈 Globo <span class="precio-extra">+Bs. 15</span>
+            </label>
+            <label>
+                <input type="checkbox" name="optExtra" value="Chocolates" data-precio="20">
+                🍫 Chocolates <span class="precio-extra">+Bs. 20</span>
+            </label>
+            <label>
+                <input type="checkbox" name="optExtra" value="Peluche pequeño" data-precio="25">
+                🧸 Peluche <span class="precio-extra">+Bs. 25</span>
+            </label>
+        </div>
+
+        <label for="optDetalles">Otros detalles o ideas (opcional):</label>
+        <textarea id="optDetalles" maxlength="500" data-etiqueta="Detalles"
+            placeholder="Cuéntanos cómo imaginas tu regalo: estilo, inicial en la bisutería, flor favorita, etc."></textarea>
+
+        <p class="nota-pago">
+            El mensaje de la tarjeta lo escribes en “Mensaje personalizado”
+            en la sección Datos de tu pedido.
+        </p>
+
+    </form>
+        </div>
+
+        <div id="resumenPersonalizacion"></div>
+
+        <label>
+            <input type="checkbox" id="envioNormal">
+            Añadir envío normal (Bs. 10)
+        </label>
+
+        <div class="cart-total">
+            <p>Subtotal: <span id="subtotal">Bs. 0,00</span></p>
+            <p>Personalización y extras: <span id="costoPersonalizacion">Bs. 0,00</span></p>
+            <p>Envío: <span id="costoEnvio">Bs. 0,00</span></p>
+            <strong>Total: <span id="total">Bs. 0,00</span></strong>
+            <p style="margin-top:10px;">
+                Adelanto del 50% a pagar ahora:
+                <strong id="adelantoCarrito">Bs. 0,00</strong>
+            </p>
+            <p>
+                Saldo a pagar a la entrega:
+                <span id="saldoCarrito">Bs. 0,00</span>
+            </p>
+        </div>
+
+        <p class="anticipo-aviso">
+            💖 Para preparar y enviar tu pedido necesitamos un
+            <strong>adelanto del 50%</strong> del total. Podrás pagarlo
+            con <strong>QR</strong> al confirmar tu pedido. El resto se paga a la entrega.
+        </p>
+
+        <a href="#pedidos" class="btn">Continuar con el pedido</a>
+        <a href="#pago" class="btn">💳 Pagar adelanto con QR</a>
+    </div>
+</section>
+
+<section id="precios">
+    <h2 class="section-title">💰 Lista de Precios</h2>
+
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+        </tr>
+        <tr>
+            <td>Arreglo floral</td>
+            <td>Flores frescas decoradas</td>
+            <td>Bs. 80</td>
+        </tr>
+        <tr>
+            <td>Bisutería artesanal</td>
+            <td>Diseño hecho a mano</td>
+            <td>Bs. 45</td>
+        </tr>
+        <tr>
+            <td>Pulsera artesanal</td>
+            <td>Diseño personalizado</td>
+            <td>Bs. 35</td>
+        </tr>
+        <tr>
+            <td>Combo FlorArt</td>
+            <td>Flores y bisutería</td>
+            <td>Bs. 130</td>
+        </tr>
+        <tr>
+            <td>Regalo personalizado</td>
+            <td>Regalo con mensaje especial</td>
+            <td>Bs. 100</td>
+        </tr>
+    </table>
+</section>
+
+<section class="beneficios">
+    <h2 class="section-title">✨ ¿Por qué elegir FlorArt?</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🌸 Productos artesanales</h3>
+            <p>Elaborados con creatividad y dedicación.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎁 Personalización</h3>
+            <p>Elige colores, diseños y mensajes especiales.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚚 Entrega</h3>
+            <p>Opciones de entrega para tus compras.</p>
+        </div>
+
+        <div class="card">
+            <h3>💖 Hecho con amor</h3>
+            <p>Detalles preparados para ocasiones especiales.</p>
+        </div>
+    </div>
+</section>
+
+<section id="nosotros">
+    <h2 class="section-title">🌺 Sobre FlorArt</h2>
+
+    <div class="card">
+        <h3>¿Quiénes somos?</h3>
+        <p>
+            FlorArt es un emprendimiento dedicado a la creación
+            y comercialización de arreglos florales y bisutería
+            artesanal.
+        </p>
+        <p>
+            Nuestro objetivo es ofrecer regalos originales,
+            personalizados y accesibles, apoyando el trabajo
+            de artesanos locales.
+        </p>
+        <p>
+            Nuestro taller se encuentra en Cochabamba, Bolivia.
+        </p>
+    </div>
+</section>
+
+<section id="pedidos">
+    <h2 class="section-title">📝 Datos de tu Pedido</h2>
+
+    <div class="formulario">
+        <form id="formPedido">
+
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" type="text" required maxlength="80">
+
+            <label for="apellidos">Apellidos:</label>
+            <input id="apellidos" type="text" required maxlength="100">
+
+            <label for="direccion">Dirección de entrega:</label>
+            <input id="direccion" type="text" required maxlength="200">
+
+            <label for="correoPedido">Correo electrónico:</label>
+            <input id="correoPedido" type="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input id="telefono" type="tel" required maxlength="20">
+
+            <label for="fecha">Fecha de entrega solicitada:</label>
+            <input id="fecha" type="date">
+
+            <label for="mensaje">Mensaje personalizado:</label>
+            <textarea id="mensaje" maxlength="500"></textarea>
+
+            <p class="anticipo-aviso">
+                Al confirmar se generará tu recibo con el
+                <strong>adelanto del 50%</strong> y podrás pagarlo
+                con QR. Tu pedido se
+                prepara y envía cuando el adelanto esté confirmado.
+            </p>
+
+            <p id="errorPedido" style="display:none; color:#b00020; font-weight:bold; margin-top:12px;"></p>
+
+            <button type="submit" class="btn">
+                Confirmar pedido y pagar adelanto 💖
+            </button>
+        </form>
+    </div>
+
+    <div id="recibo"></div>
+</section>
+
+<section id="pago">
+    <h2 class="section-title">💳 Pagar mi adelanto (50%)</h2>
+
+    <div class="formulario" id="pagoContenido"></div>
+</section>
+
+<section>
+    <h2 class="section-title">⭐ Opiniones de nuestros clientes</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>María</h3>
+            <p>★★★★★</p>
+            <p>Me encantó el arreglo floral.</p>
+        </div>
+
+        <div class="card">
+            <h3>Andrea</h3>
+            <p>★★★★★</p>
+            <p>La bisutería tiene diseños hermosos.</p>
+        </div>
+
+        <div class="card">
+            <h3>Gabriel</h3>
+            <p>★★★★★</p>
+            <p>El combo fue perfecto para regalar.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">❓ Preguntas Frecuentes</h2>
+
+    <details>
+        <summary>¿Qué productos ofrece FlorArt?</summary>
+        <p>Flores, bisutería artesanal, combos y regalos personalizados.</p>
+    </details>
+
+    <details>
+        <summary>¿Puedo personalizar mi regalo?</summary>
+        <p>Sí. En la sección Personalizar eliges ocasión, tipo de flor, tamaño, colores, bisutería, empaque y extras, y además puedes añadir un mensaje personalizado.</p>
+    </details>
+
+    <details>
+        <summary>¿Dónde se encuentra FlorArt?</summary>
+        <p>En Cochabamba, Bolivia.</p>
+    </details>
+
+    <details>
+        <summary>¿Cómo realizo un pedido?</summary>
+        <p>Agrega productos al carrito, completa el formulario y paga el adelanto del 50%.</p>
+    </details>
+
+    <details>
+        <summary>¿Cómo funciona el adelanto del 50%?</summary>
+        <p>
+            Al confirmar tu pedido pagas la mitad del total con QR. Preparamos y enviamos tu pedido cuando
+            confirmamos ese pago. El saldo restante se paga a la entrega.
+        </p>
+    </details>
+
+    <details>
+        <summary>¿Qué medios de pago aceptan?</summary>
+        <p>Pago por QR para el adelanto.</p>
+    </details>
+</section>
+
+<section id="contacto">
+    <h2 class="section-title">📞 Contáctanos</h2>
+
+    <div class="contacto">
+        <h3>🌸 FlorArt</h3>
+        <p>📍 Cochabamba - Bolivia</p>
+        <p>📱 WhatsApp: 67746220 / 72737759</p>
+        <p>📧 Correo: florart@gmail.com</p>
+        <p>📸 Instagram: @FlorArt_Bolivia</p>
+        <p>💬 Facebook: FlorArt Bolivia</p>
+    </div>
+</section>
+
+<footer>
+    <h3>🌸 FlorArt 🌸</h3>
+    <p>Flores y Bisutería Artesanal con Amor</p>
+    <p>© 2026 FlorArt | Todos los derechos reservados</p>
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#contacto">Contacto</a>
+</footer>
+
+<script>
+"use strict";
+
+/* ============================================================
+   CONFIGURACIÓN DE PAGOS  (edita estos valores)
+   ============================================================ */
+
+// Tu número de WhatsApp con código de país, solo números.
+// Bolivia = 591. Los pedidos llegan a este número.
+// (Si prefieres el otro, cámbialo por "59172737759")
+const WHATSAPP_NUMERO = "59167746220";
+
+// Imagen de tu código QR de cobro (la que te da tu banco).
+// Guárdala junto a este archivo con este nombre.
+const QR_IMAGEN = "qr-pago.jpg";
+
+// Porcentaje de adelanto
+const PORCENTAJE_ADELANTO = 0.5;
+
+/* ============================================================ */
+
+const productos = {
+    flores: {
+        nombre: "Arreglos Florales",
+        precio: 80
+    },
+    bisuteria: {
+        nombre: "Bisutería Artesanal",
+        precio: 45
+    },
+    combo: {
+        nombre: "Combos Especiales",
+        precio: 130
+    },
+    regalo: {
+        nombre: "Regalos Personalizados",
+        precio: 100
+    }
+};
+
+const cantidades = {
+    flores: 0,
+    bisuteria: 0,
+    combo: 0,
+    regalo: 0
+};
+
+let pedidoActual = null;
+let pagoReportadoGlobal = false;
+
+const formatoBs = numero =>
+    "Bs. " + numero.toLocaleString("es-BO", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+function escaparHTML(texto) {
+    return String(texto).replace(/[&<>"']/g, letra => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[letra]);
+}
+
+function redondear(n) {
+    return Math.round(n * 100) / 100;
+}
+
+function calcularAdelanto(total) {
+    const adelanto = redondear(total * PORCENTAJE_ADELANTO);
+    return {
+        adelanto: adelanto,
+        saldo: redondear(total - adelanto)
+    };
+}
+
+function cambiarCantidad(id, cambio) {
+    if (!productos[id]) return;
+
+    cantidades[id] = Math.max(0, cantidades[id] + cambio);
+    actualizarCarrito();
+}
+
+function agregarProducto(id) {
+    cambiarCantidad(id, 1);
+}
+
+function hayProductos() {
+    return Object.values(cantidades).some(cantidad => cantidad > 0);
+}
+
+function calcularSubtotal() {
+    return Object.keys(productos).reduce(
+        (suma, id) => suma + productos[id].precio * cantidades[id],
+        0
+    );
+}
+
+function calcularEnvio() {
+    return document.getElementById("envioNormal").checked && hayProductos()
+        ? 10
+        : 0;
+}
+
+// PERSONALIZACIÓN DEL PEDIDO
+function leerPersonalizacion() {
+    const lista = [];
+    let extra = 0;
+    const panel = "#panelPersonalizar ";
+
+    document.querySelectorAll(panel + "select").forEach(sel => {
+        if (!sel.value) return;
+        const precio = Number(sel.options[sel.selectedIndex].dataset.precio || 0);
+        lista.push({
+            etiqueta: sel.dataset.etiqueta,
+            valor: sel.value,
+            precio: precio
+        });
+        extra += precio;
+    });
+
+    document.querySelectorAll(
+        panel + "input[type='text'], " + panel + "textarea"
+    ).forEach(campo => {
+        const texto = campo.value.trim();
+        if (texto) {
+            lista.push({
+                etiqueta: campo.dataset.etiqueta,
+                valor: texto,
+                precio: 0
+            });
+        }
+    });
+
+    const colores = Array.from(
+        document.querySelectorAll(panel + "input[name='optColor']:checked")
+    ).map(c => c.value);
+
+    if (colores.length) {
+        lista.push({
+            etiqueta: "Colores",
+            valor: colores.join(", "),
+            precio: 0
+        });
+    }
+
+    document.querySelectorAll(
+        panel + "input[name='optExtra']:checked"
+    ).forEach(c => {
+        const precio = Number(c.dataset.precio || 0);
+        lista.push({ etiqueta: "Extra", valor: c.value, precio: precio });
+        extra += precio;
+    });
+
+    return { lista: lista, extra: extra };
+}
+
+function htmlResumenPersonalizacion(pers) {
+    if (!pers.lista.length) return "";
+
+    return `
+        <div class="resumen-personalizacion">
+            <strong>🎨 Tu personalización</strong>
+            ${pers.lista.map(item => `
+                <div class="receipt-row">
+                    <span>${escaparHTML(item.etiqueta)}:
+                        ${escaparHTML(item.valor)}</span>
+                    <span>${item.precio > 0
+                        ? "+ " + formatoBs(item.precio) : ""}</span>
+                </div>
+            `).join("")}
+        </div>
+    `;
+}
+
+function actualizarCarrito() {
+    const contenedor = document.getElementById("carritoItems");
+    let filas = "";
+
+    Object.keys(productos).forEach(id => {
+        const producto = productos[id];
+        const cantidad = cantidades[id];
+
+        document.getElementById("qty-" + id).textContent = cantidad;
+
+        if (cantidad > 0) {
+            filas += `
+                <div class="cart-row">
+                    <div>
+                        <strong>${producto.nombre}</strong><br>
+                        ${formatoBs(producto.precio)} cada uno
+                    </div>
+
+                    <div class="qty-controls">
+                        <button type="button"
+                            onclick="cambiarCantidad('${id}', -1)">−</button>
+                        <span>${cantidad}</span>
+                        <button type="button"
+                            onclick="cambiarCantidad('${id}', 1)">+</button>
+                    </div>
+
+                    <strong>
+                        ${formatoBs(producto.precio * cantidad)}
+                    </strong>
+                </div>
+            `;
+        }
+    });
+
+    contenedor.innerHTML = filas;
+
+    document.getElementById("carritoVacio").style.display =
+        filas ? "none" : "block";
+
+    const subtotal = calcularSubtotal();
+    const envio = calcularEnvio();
+    const pers = leerPersonalizacion();
+    const extraPers = hayProductos() ? pers.extra : 0;
+    const total = subtotal + extraPers + envio;
+    const partes = calcularAdelanto(total);
+
+    document.getElementById("resumenPersonalizacion").innerHTML =
+        hayProductos() ? htmlResumenPersonalizacion(pers) : "";
+
+    document.getElementById("costoPersonalizacion").textContent =
+        formatoBs(extraPers);
+
+    document.getElementById("subtotal").textContent =
+        formatoBs(subtotal);
+
+    document.getElementById("costoEnvio").textContent =
+        formatoBs(envio);
+
+    document.getElementById("total").textContent =
+        formatoBs(total);
+
+    document.getElementById("adelantoCarrito").textContent =
+        formatoBs(partes.adelanto);
+
+    document.getElementById("saldoCarrito").textContent =
+        formatoBs(partes.saldo);
+
+    // Mantener la sección de pago al día con el carrito
+    // (mientras el pedido no esté confirmado)
+    if (!pedidoActual && typeof mostrarPago === "function") {
+        mostrarPago();
+    }
+}
+
+document.getElementById("envioNormal").addEventListener(
+    "change",
+    actualizarCarrito
+);
+
+// Cualquier cambio en la personalización actualiza el carrito y el total
+document.getElementById("panelPersonalizar").addEventListener(
+    "change",
+    actualizarCarrito
+);
+
+// BUSCADOR DE PRODUCTOS
+document.getElementById("buscarProducto").addEventListener(
+    "input",
+    function () {
+        const busqueda = this.value.toLowerCase().trim();
+
+        document.querySelectorAll("#listaProductos .card").forEach(
+            tarjeta => {
+                tarjeta.style.display =
+                    tarjeta.innerText.toLowerCase().includes(busqueda)
+                        ? ""
+                        : "none";
+            }
+        );
+    }
+);
+
+// GENERAR RECIBO DEL PEDIDO + PAGO DEL ADELANTO
+document.getElementById("formPedido").addEventListener(
+    "submit",
+    function (evento) {
+        evento.preventDefault();
+
+        const errorPedido = document.getElementById("errorPedido");
+
+        if (!hayProductos()) {
+            errorPedido.textContent =
+                "⚠️ Primero agrega al menos un producto al carrito " +
+                "(sección Productos).";
+            errorPedido.style.display = "block";
+            return;
+        }
+
+        errorPedido.style.display = "none";
+
+        const nombre = document.getElementById("nombre").value.trim();
+        const apellidos = document.getElementById("apellidos").value.trim();
+        const direccion = document.getElementById("direccion").value.trim();
+        const correo = document.getElementById("correoPedido").value.trim();
+        const telefono = document.getElementById("telefono").value.trim();
+        const fecha = document.getElementById("fecha").value;
+        const mensaje = document.getElementById("mensaje").value.trim();
+
+        const subtotal = calcularSubtotal();
+        const envio = calcularEnvio();
+        const pers = leerPersonalizacion();
+        const extraPers = pers.extra;
+        const total = subtotal + extraPers + envio;
+        const partes = calcularAdelanto(total);
+
+        const numeroPedido =
+            "FA-" + String(Date.now()).slice(-8);
+
+        const fechaHora = new Date().toLocaleString("es-BO");
+
+        const items = [];
+        let lineas = "";
+
+        Object.keys(productos).forEach(id => {
+            if (cantidades[id] > 0) {
+                items.push(
+                    productos[id].nombre + " x" + cantidades[id] +
+                    " = " + formatoBs(productos[id].precio * cantidades[id])
+                );
+
+                lineas += `
+                    <div class="receipt-row">
+                        <span>
+                            ${productos[id].nombre} × ${cantidades[id]}
+                        </span>
+                        <span>
+                            ${formatoBs(productos[id].precio * cantidades[id])}
+                        </span>
+                    </div>
+                `;
+            }
+        });
+
+        pedidoActual = {
+            numero: numeroPedido,
+            fechaHora: fechaHora,
+            nombre: nombre,
+            apellidos: apellidos,
+            direccion: direccion,
+            correo: correo,
+            telefono: telefono,
+            fecha: fecha,
+            mensaje: mensaje,
+            items: items,
+            personalizacion: pers.lista,
+            extraPers: extraPers,
+            subtotal: subtotal,
+            envio: envio,
+            total: total,
+            adelanto: partes.adelanto,
+            saldo: partes.saldo,
+            metodo: "qr",
+            pagoReportado: false
+        };
+
+        const recibo = document.getElementById("recibo");
+
+        recibo.innerHTML = `
+            <h2>🌸 FlorArt 🌸</h2>
+            <h3>Recibo de pedido</h3>
+
+            <p><strong>Número:</strong> ${numeroPedido}</p>
+            <p><strong>Fecha:</strong> ${escaparHTML(fechaHora)}</p>
+            <p><strong>Cliente:</strong>
+                ${escaparHTML(nombre + " " + apellidos)}</p>
+            <p><strong>Correo:</strong> ${escaparHTML(correo)}</p>
+            <p><strong>Teléfono:</strong> ${escaparHTML(telefono)}</p>
+            <p><strong>Dirección:</strong> ${escaparHTML(direccion)}</p>
+
+            ${fecha ? `<p><strong>Entrega solicitada:</strong>
+                ${escaparHTML(fecha)}</p>` : ""}
+
+            <hr>
+            ${lineas}
+
+            ${htmlResumenPersonalizacion(pers)}
+
+            <div class="receipt-row">
+                <span>Subtotal</span>
+                <span>${formatoBs(subtotal)}</span>
+            </div>
+
+            ${extraPers > 0 ? `
+            <div class="receipt-row">
+                <span>Personalización y extras</span>
+                <span>${formatoBs(extraPers)}</span>
+            </div>` : ""}
+
+            <div class="receipt-row">
+                <span>Envío normal</span>
+                <span>${formatoBs(envio)}</span>
+            </div>
+
+            <div class="receipt-row">
+                <strong>TOTAL</strong>
+                <strong>${formatoBs(total)}</strong>
+            </div>
+
+            <div class="adelanto-box">
+                <div class="receipt-row">
+                    <strong>Adelanto (50%) a pagar ahora</strong>
+                    <strong id="montoAdelanto">${formatoBs(partes.adelanto)}</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Saldo a pagar a la entrega</span>
+                    <span>${formatoBs(partes.saldo)}</span>
+                </div>
+            </div>
+
+            ${mensaje ? `<p><strong>Mensaje personalizado:</strong>
+                ${escaparHTML(mensaje)}</p>` : ""}
+
+            <p class="anticipo-aviso">
+                💳 Para que enviemos tu pedido, paga ahora el adelanto
+                de <strong>${formatoBs(partes.adelanto)}</strong> en la
+                sección <strong>Pagar mi adelanto</strong> (justo debajo),
+                con QR.
+            </p>
+
+            <p style="margin-top:15px;">
+                <strong>Estado:</strong> Adelanto pendiente. El pago se
+                confirma por FlorArt al recibir tu comprobante.
+            </p>
+
+            <a href="#pago" class="btn">Ir a pagar mi adelanto</a>
+
+            <button class="btn" onclick="window.print()">
+                Imprimir o guardar como PDF
+            </button>
+
+            <button class="btn" onclick="nuevoPedido()">
+                Nuevo pedido
+            </button>
+        `;
+
+        recibo.style.display = "block";
+        mostrarPago();
+        recibo.scrollIntoView({ behavior: "smooth" });
+    }
+);
+
+// SECCIÓN "PAGAR MI ADELANTO"
+// Datos del pago: usa el pedido confirmado o, si todavía no se confirmó,
+// el contenido actual del carrito.
+function datosPago() {
+    if (pedidoActual) return pedidoActual;
+    if (!hayProductos()) return null;
+
+    const subtotal = calcularSubtotal();
+    const envio = calcularEnvio();
+    const pers = leerPersonalizacion();
+    const total = subtotal + pers.extra + envio;
+    const partes = calcularAdelanto(total);
+    const valor = id => document.getElementById(id).value.trim();
+
+    const items = [];
+    Object.keys(productos).forEach(id => {
+        if (cantidades[id] > 0) {
+            items.push(
+                productos[id].nombre + " x" + cantidades[id] +
+                " = " + formatoBs(productos[id].precio * cantidades[id])
+            );
+        }
+    });
+
+    return {
+        numero: "(aún sin confirmar)",
+        nombre: valor("nombre") || "(sin completar)",
+        apellidos: valor("apellidos"),
+        direccion: valor("direccion") || "(sin completar)",
+        correo: valor("correoPedido") || "(sin completar)",
+        telefono: valor("telefono") || "(sin completar)",
+        fecha: document.getElementById("fecha").value,
+        mensaje: valor("mensaje"),
+        items: items,
+        personalizacion: pers.lista,
+        extraPers: pers.extra,
+        subtotal: subtotal,
+        envio: envio,
+        total: total,
+        adelanto: partes.adelanto,
+        saldo: partes.saldo
+    };
+}
+
+function mostrarPago() {
+    const cont = document.getElementById("pagoContenido");
+    const datos = datosPago();
+
+    if (!datos) {
+        cont.innerHTML = `
+            <p>
+                Todavía no agregaste productos. Agrega al menos uno al
+                carrito y aquí aparecerán las opciones para pagar el
+                <strong>adelanto del 50%</strong> con
+                <strong>QR</strong>.
+            </p>
+            <a href="#productos" class="btn">Ver productos</a>
+        `;
+        return;
+    }
+
+    const p = Object.assign({}, datos, { metodo: "qr" });
+    const pagado = pagoReportadoGlobal;
+    const sinConfirmar = !pedidoActual;
+
+    cont.innerHTML = `
+        <p><strong>Pedido ${escaparHTML(p.numero)}</strong></p>
+        ${sinConfirmar ? `<p class="nota-pago">
+            Para generar tu recibo, completa tus datos en
+            <a href="#pedidos">Datos de tu pedido</a> y confirma el pedido.
+            Puedes pagar el adelanto desde aquí.
+        </p>` : ""}
+        <div class="adelanto-box">
+            <div class="receipt-row">
+                <span>Total del pedido</span>
+                <span>${formatoBs(p.total)}</span>
+            </div>
+            <div class="receipt-row">
+                <strong>Adelanto (50%) a pagar ahora</strong>
+                <strong>${formatoBs(p.adelanto)}</strong>
+            </div>
+            <div class="receipt-row">
+                <span>Saldo a pagar a la entrega</span>
+                <span>${formatoBs(p.saldo)}</span>
+            </div>
+        </div>
+
+        <div class="pago-panel">
+            <h3>Paga tu adelanto con QR</h3>
+
+            <div id="detalleQR" class="metodo-detalle activo">
+                <p>Escanea este QR con la app de tu banco y paga
+                exactamente <strong>${formatoBs(p.adelanto)}</strong>.</p>
+                <img class="qr-img" src="qr-img.png"
+                    alt="Código QR de pago FlorArt"
+                    onerror="this.style.display='none';
+                    document.getElementById('qrFalta').style.display='block';">
+                <div id="qrFalta" class="qr-vacio" style="display:none;">
+                    <div class="icono">📱</div>
+                    <strong>Aquí va el código QR de FlorArt</strong><br>
+                    Todavía no está disponible. Escríbenos por WhatsApp
+                    y te lo enviamos.
+                </div>
+                <p class="nota-pago">
+                    Después de pagar, envíanos el comprobante por
+                    WhatsApp con el botón de abajo.
+                </p>
+            </div>
+
+            <div class="acciones-pago">
+                <button type="button" class="btn btn-wa" onclick="enviarWhatsApp()">
+                    📲 Enviar pedido y comprobante por WhatsApp
+                </button>
+                <button type="button" class="btn" onclick="reportarPago()">
+                    ✅ Ya pagué el adelanto
+                </button>
+            </div>
+
+            <p id="estadoPago" class="estado-pago ${pagado ? "estado-reportado" : "estado-pendiente"}">
+                ${pagado
+                    ? "✅ Pago reportado. Cuando FlorArt confirme tu comprobante, prepararemos y enviaremos tu pedido. 🚚"
+                    : "⏳ Adelanto pendiente. Tu pedido se envía después de confirmar el pago del 50%."}
+            </p>
+        </div>
+    `;
+}
+
+function textoPedidoWhatsApp() {
+    const p = datosPago();
+    const metodo = "QR";
+
+    let texto =
+        "🌸 *Pedido FlorArt " + p.numero + "*\n\n" +
+        "Cliente: " + p.nombre + " " + p.apellidos + "\n" +
+        "Teléfono: " + p.telefono + "\n" +
+        "Correo: " + p.correo + "\n" +
+        "Dirección: " + p.direccion + "\n";
+
+    if (p.fecha) texto += "Entrega solicitada: " + p.fecha + "\n";
+
+    texto += "\n*Productos:*\n" + p.items.join("\n") + "\n";
+    if (p.personalizacion && p.personalizacion.length) {
+        texto += "\n*Personalización:*\n" +
+            p.personalizacion.map(i =>
+                "• " + i.etiqueta + ": " + i.valor +
+                (i.precio > 0 ? " (+" + formatoBs(i.precio) + ")" : "")
+            ).join("\n") + "\n";
+    }
+
+    texto += "\nSubtotal: " + formatoBs(p.subtotal);
+    if (p.extraPers > 0) {
+        texto += "\nPersonalización y extras: " + formatoBs(p.extraPers);
+    }
+    texto += "\nEnvío: " + formatoBs(p.envio);
+    texto += "\n*Total: " + formatoBs(p.total) + "*";
+    texto += "\n*Adelanto 50%: " + formatoBs(p.adelanto) + "*";
+    texto += "\nSaldo a la entrega: " + formatoBs(p.saldo);
+    texto += "\nMétodo de pago: " + metodo;
+
+    if (p.mensaje) texto += "\n\nMensaje personalizado: " + p.mensaje;
+
+    texto += "\n\nAdjunto el comprobante del adelanto.";
+
+    return texto;
+}
+
+function enviarWhatsApp() {
+    if (!datosPago()) return;
+
+    const url =
+        "https://wa.me/" + WHATSAPP_NUMERO +
+        "?text=" + encodeURIComponent(textoPedidoWhatsApp());
+
+    window.open(url, "_blank", "noopener");
+}
+
+function reportarPago() {
+    if (!datosPago()) return;
+
+    pagoReportadoGlobal = true;
+    if (pedidoActual) pedidoActual.pagoReportado = true;
+
+    const estado = document.getElementById("estadoPago");
+    estado.className = "estado-pago estado-reportado";
+    estado.textContent =
+        "✅ Pago reportado. Envía tu comprobante por WhatsApp; " +
+        "cuando FlorArt lo confirme, prepararemos y enviaremos tu pedido. 🚚";
+}
+
+function nuevoPedido() {
+    Object.keys(cantidades).forEach(id => {
+        cantidades[id] = 0;
+    });
+
+    pedidoActual = null;
+    pagoReportadoGlobal = false;
+
+    document.getElementById("formPedido").reset();
+    document.getElementById("panelPersonalizar").reset();
+    document.getElementById("envioNormal").checked = false;
+    document.getElementById("recibo").style.display = "none";
+
+    actualizarCarrito();
+    mostrarPago();
+}
+
+// INICIAR CARRITO VACÍO
+actualizarCarrito();
+mostrarPago();
+</script>
+
+</body>
+</html>
